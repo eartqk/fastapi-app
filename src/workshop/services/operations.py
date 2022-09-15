@@ -40,6 +40,18 @@ class OperationService:
     def get(self, user_id: int, operation_id: int) -> tables.Operation:
         return self._get(user_id, operation_id)
 
+    def create_many(self, user_id: int, operations_data: List[OperationCreate]) -> List[tables.Operation]:
+        operations = [
+            tables.Operation(
+                **operation_data.dict(),
+                user_id=user_id,
+            )
+            for operation_data in operations_data
+        ]
+        self.session.add_all(operations)
+        self.session.commit()
+        return operations
+
     def create(self, user_id: int, operation_data: OperationCreate) -> tables.Operation:
         operation = tables.Operation(
             **operation_data.dict(),
