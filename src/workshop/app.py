@@ -5,7 +5,7 @@ from .api import router
 
 app = FastAPI(
     title='Workshop',
-    description='Приложение учета доходов и расходов',
-    version='1.0.0'
+    description='Applications for accounting of income and outcome',
+    version='1.0.0',
 )
 app.include_router(router)

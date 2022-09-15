@@ -8,6 +8,7 @@ from workshop.services.reports import ReportsService
 
 router = APIRouter(
     prefix='/reports',
+    tags=['reports'],
 )
 
 
